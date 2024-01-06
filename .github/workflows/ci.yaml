@@ -4,9 +4,10 @@ on:
     branches:
       - develop
 jobs:
-  strategy:
-    matrix:
-      version: [1.17, 1.18, 1.19, 1.20]
+  example_matrix:
+    strategy:
+      matrix:
+        version: [1.17, 1.18, 1.19, 1.20]
   check-application:
     runs-on: ubuntu-latest
     steps:
