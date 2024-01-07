@@ -8,24 +8,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        version: [1.17, 1.18, 1.19]
-
+  check-application:
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
+      - uses: actions/checkout@v2
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
           go-version: ${{ matrix.version }}
-
       - name: Install dependencies
         run: go get -v -t ./...
-
       - name: Test
         run: go test -v ./...
-        
       - name: Run
         run: go run math.go
